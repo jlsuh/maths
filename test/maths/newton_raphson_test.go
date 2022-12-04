@@ -1,7 +1,6 @@
 package maths
 
 import (
-	"fmt"
 	"math"
 	nr "maths/internal/maths"
 	"testing"
@@ -21,10 +20,9 @@ func TestNewtonRaphsonWithAbsoluteErrorStoppingCriteria(t *testing.T) {
 		nr.AbsoluteError,
 	)
 	got := newtonRaphson.Solve()
-	aproxValue := 0.649233541
-	want := aproxValue
-	fmt.Println("got:", got, "want:", want)
-	if math.Abs(got-want) > epsilon {
-		t.Errorf("got %f, want %f", got, want)
+	approxValue := 0.649233541
+	want := approxValue
+	if math.Abs(want-got) >= epsilon {
+		t.Errorf("got %.20f, want %.20f", got, want)
 	}
 }
