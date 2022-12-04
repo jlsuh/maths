@@ -26,3 +26,25 @@ func TestNewtonRaphsonWithAbsoluteErrorStoppingCriteria(t *testing.T) {
         t.Errorf("got %.20f, want %.20f", got, want)
     }
 }
+
+func TestNewtonRaphsonWithFunctionAbsoluteValueStoppingCriteria(t *testing.T) {
+    epsilon := 0.000001
+    f := func(x float64) float64 {
+        return math.Pow(x, 5) - 2*math.Pow(x, 3) - math.Log(x)
+    }
+    newtonRaphson := nr.NewNewtonRaphson(
+        f,
+        func(x float64) float64 {
+            return 5*math.Pow(x, 4) - 6*math.Pow(x, 2) - 1/x
+        },
+        1,
+        epsilon,
+        nr.FuncAbsoluteValue,
+    )
+    got := newtonRaphson.Solve()
+    approxValue := 0.649233541
+    want := approxValue
+    if math.Abs(f(got)) >= epsilon {
+        t.Errorf("got %.20f, want %.20f", got, want)
+    }
+}
