@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	repl := repl.NewRepl()
-	repl.Run()
+	r := repl.NewRepl()
+	r.Run()
 }
