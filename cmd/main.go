@@ -1,10 +1,10 @@
 package main
 
 import (
-	"maths/internal/repl"
+    "maths/internal/repl"
 )
 
 func main() {
-	r := repl.NewRepl()
-	r.Run()
+    r := repl.NewRepl()
+    r.Run()
 }
